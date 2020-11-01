@@ -4,6 +4,8 @@ This little package displays the current block height for Cosmos chains on SSD13
 
 SSD1306 displays are commonly available OLED displays for Raspberry Pi and other IoT devices. Check out [Adafruit OLED bonnet](https://www.adafruit.com/product/3531), and [Adafruit PiOLDED](https://www.adafruit.com/product/3527).
 
+![Image of cluster-buster](https://cdn.discordapp.com/attachments/755567300152918077/771747410740772884/image0.jpg)
+
 ## OS Configuration
 
 ### Raspberry Pi OS
