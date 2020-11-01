@@ -1,4 +1,4 @@
-# Pulsar SSD1306 for Cosmos Validators
+# Pulsar SSD1306: Block Height OLED Display for Cosmos Validators
 
 This little module displays the current block height for Cosmos chains on SSD1306 OLED displays.
 
@@ -68,14 +68,16 @@ scp target/aarch64-unknown-linux-gnu/release/pulsar-ssd1306 user@ip:/home/user
 
 ## Running on validator
 
-Pulsar SSD1306 works by reading the block height from your chain's log file.
+Pulsar SSD1306 currently works by reading the block height from a Tendermint node running on localhost.
 
-SSH to your Pi and run it with the name of your chain's `systemd` unit:
+SSH to your Pi and run it with:
 
 ```sh
-sudo ./pulsar-ssd1306 staked
+sudo ./pulsar-ssd1306
 ```
 
 If all goes well, you should see your block height on the display! Obviously, the chain should already be running.
 
-Working with different log file locations is left as an exercise for the developer! PRs are welcome.
+## Note
+
+Querying the block height every second from Tendermint is not very efficient. A better approach is to monitor `systemd`, and update the display whenever there's a new log entry. I'll leave that as an exercise for an ambitious developer. PRs welcome!
