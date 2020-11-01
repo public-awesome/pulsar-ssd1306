@@ -10,4 +10,7 @@ edition = "2018"
 ctrlc = "3.1.7"
 embedded-graphics = "0.6.2"
 linux-embedded-hal = "0.3.0"
+openssl = { version = "0.10.30", features = ["vendored"] }
+reqwest = { version = "0.10.8", features = ["blocking", "json"] }
+serde_json = "1.0.59"
 ssd1306 = "0.4.0"

@@ -5,8 +5,9 @@ use embedded_graphics::{
     style::TextStyleBuilder,
 };
 use linux_embedded_hal::I2cdev;
-use ssd1306::{Builder, I2CDIBuilder, displaysize::DisplaySize128x32, mode::GraphicsMode};
+use ssd1306::{displaysize::DisplaySize128x32, mode::GraphicsMode, Builder, I2CDIBuilder};
 extern crate ctrlc;
+use serde_json::Value;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 
@@ -35,12 +36,21 @@ fn main() {
         .build();
 
     while running.load(Ordering::SeqCst) {
-        Text::new("Hello world!", Point::zero())
-            .into_styled(text_style)
-            .draw(&mut disp)
+        let body = reqwest::blocking::get("http://localhost:26657/status")
+            .expect("URL Failed")
+            .text()
             .unwrap();
-
-        disp.flush().unwrap();
+        let res: Value = serde_json::from_str(body.as_str()).unwrap();
+        if let height = res["result"]["sync_info"]["latest_block_height"]
+            .as_str()
+            .unwrap()
+        {
+            Text::new(height, Point::zero())
+                .into_styled(text_style)
+                .draw(&mut disp)
+                .unwrap();
+            disp.flush().unwrap();
+        }
     }
 
     disp.clear();
