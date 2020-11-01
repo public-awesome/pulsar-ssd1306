@@ -3,7 +3,6 @@ use embedded_graphics::{
     pixelcolor::BinaryColor,
     prelude::*,
     style::{TextStyleBuilder},
-    DrawTarget,
 };
 use linux_embedded_hal::I2cdev;
 use ssd1306::{mode::GraphicsMode, Builder, I2CDIBuilder};
