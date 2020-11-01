@@ -6,8 +6,6 @@ use embedded_graphics::{
 };
 use linux_embedded_hal::I2cdev;
 use ssd1306::{Builder, I2CDIBuilder, displaysize::DisplaySize128x32, mode::GraphicsMode};
-use std::thread::sleep;
-use std::time::Duration;
 extern crate ctrlc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
@@ -43,11 +41,8 @@ fn main() {
             .unwrap();
 
         disp.flush().unwrap();
-
-        sleep(Duration::from_secs(2));
-
-        disp.clear();
     }
+
     disp.clear();
     disp.flush().unwrap();
 }
