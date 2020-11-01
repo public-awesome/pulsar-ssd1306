@@ -1,6 +1,6 @@
 # Pulsar SSD1306: Block Height OLED Display for Cosmos Validators
 
-This little module displays the current block height for Cosmos chains on SSD1306 OLED displays.
+This little package displays the current block height for Cosmos chains on SSD1306 OLED displays.
 
 SSD1306 displays are commonly available OLED displays for Raspberry Pi and other IoT devices. Check out [Adafruit OLED bonnet](https://www.adafruit.com/product/3531), and [Adafruit PiOLDED](https://www.adafruit.com/product/3527).
 
@@ -33,7 +33,7 @@ Run `raspi-config` and enable I2C.
 
 ### Test device
 
-Before running this sample, you can check that your OLED display is detected by installing `i2c-tools`, then running `i2cdetect -y 1`. The first connected SSD1306 will usually be at address `0x3c`. This sample assumes `0x3c`. If your device is at a different address, then you may need to modify the code for it to work.
+Before running this sample, you can check that your OLED display is detected by installing `i2c-tools`, then running `i2cdetect -y 1`. The first connected SSD1306 will usually be at address `0x3c`. This package assumes `0x3c`. If your device is at a different address, then you may need to modify the code for it to work.
 
 ```sh
 $ sudo apt-get install i2c-tools
@@ -52,7 +52,7 @@ $ sudo i2cdetect -y 1
 
 ## Building the code
 
-The easiest way to build this sample is with [Cross](https://github.com/rust-embedded/cross). 
+The easiest way to build is with [Cross](https://github.com/rust-embedded/cross). 
 
 Cross-compile a release for your platform. For Ubuntu 64-bit:
 
