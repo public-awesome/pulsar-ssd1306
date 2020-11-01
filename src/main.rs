@@ -10,6 +10,7 @@ extern crate ctrlc;
 use serde_json::Value;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
+use std::{thread, time};
 
 fn main() {
     let running = Arc::new(AtomicBool::new(true));
@@ -35,6 +36,8 @@ fn main() {
         .background_color(BinaryColor::Off)
         .build();
 
+    let one_sec = time::Duration::from_secs(1);
+
     while running.load(Ordering::SeqCst) {
         let body = reqwest::blocking::get("http://localhost:26657/status")
             .expect("URL Failed")
@@ -50,6 +53,8 @@ fn main() {
                 .draw(&mut disp)
                 .unwrap();
             disp.flush().unwrap();
+
+            thread::sleep(one_sec);
         }
     }
 
