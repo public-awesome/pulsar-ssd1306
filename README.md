@@ -1,4 +1,4 @@
-# Pulsar SSD1306: Block Height OLED Display for Cosmos Validators
+# Pulsar SSD1306: Block Height OLED Display for Raspberry Pi Validators
 
 This little package displays the current block height for Cosmos chains on SSD1306 OLED displays.
 
