@@ -54,7 +54,9 @@ $ sudo i2cdetect -y 1
 
 ## Building the code
 
-The easiest way to build is with [Cross](https://github.com/rust-embedded/cross). 
+### Option 1: Cross-compile on development machine
+
+With [Cross](https://github.com/rust-embedded/cross) you can build the binary on your development machine.
 
 Cross-compile a release for your platform. For Ubuntu 64-bit:
 
@@ -66,6 +68,18 @@ After the build finishes, copy it to your Raspberry Pi
 
 ```sh
 scp target/aarch64-unknown-linux-gnu/release/pulsar-ssd1306 user@ip:/home/user
+```
+
+### Option 2: Compile on Pi itself
+
+```sh
+cargo build --release
+```
+
+After the build finishes, copy the binary to where you want to run it from:
+
+```sh
+cp target/aarch64-unknown-linux-gnu/release/pulsar-ssd1306 /usr/local/bin
 ```
 
 ## Running on validator
